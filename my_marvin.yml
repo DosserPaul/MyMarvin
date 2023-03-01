@@ -1,0 +1,64 @@
+jenkins:
+  remotingSecurity:
+    enabled: true
+  systemMessage: "Welcome to the Chocolatine-Powered Marvin Jenkins Instance."
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "chocolateen"
+            description: "Marvin master"
+          - name: "ape"
+            permissions:
+              - "Job/Build"
+              - "Job/Workspace"
+              - "Overall/Read"
+              - "Job/Read"
+            assignments:
+              - "i_dont_know"
+            description: "Pedagogical team member"
+          - name: "gorilla"
+            permissions:
+              - "Job/Cancel"
+              - "Job/Configure"
+              - "Job/Read"
+              - "Job/Build"
+              - "Job/Create"
+              - "Job/Move"
+              - "Job/Delete"
+              - "Job/Workspace"
+              - "Overall/Read"
+            assignments:
+              - "vaugie_g"
+            description: "Group Obsessively Researching Innovation Linked to Learning and Accomplishment"
+          - name: "assist"
+            permissions:
+              - "Job/Read"
+              - "Job/Workspace"
+              - "Overall/Read"
+            assignments:
+              - "nasso"
+            description: "Assistant"
+
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: i_dont_know
+          name: Jeremy
+          password: ${USER_I_DONT_KNOW_PASSWORD}
+        - id: vaugie_g
+          name: Garance
+          password: ${USER_VAUGIE_G_PASSWORD}
+        - id: chocolateen
+          name: Hugo
+          password: ${USER_CHOCOLATEEN_PASSWORD}
+        - id: nasso
+          name: Nassim
+          password: ${USER_NASSO_PASSWORD}
+jobs:
+  - file: ./job_dsl.groovy

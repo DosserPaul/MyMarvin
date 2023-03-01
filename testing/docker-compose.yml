@@ -1,0 +1,13 @@
+version: '3'
+services:
+    jenkintester:
+        build: .
+        image: 'emnify/jenkins-casc:latest'
+        env_file:
+          - ./.env
+        volumes:
+          - ../job_dsl.groovy:/usr/share/jenkins/ref/job_dsl.groovy
+          - ../my_marvin.yml:/var/jenkins_casc.yml
+        ports:
+          - "8082:8080"
+
